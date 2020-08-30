@@ -1,13 +1,6 @@
 import React, { useState } from 'react'
 import ContentEditable from 'react-contenteditable'
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Tooltip,
-  OverlayTrigger,
-} from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { IconContext } from 'react-icons/'
 import {
   MdTitle,
@@ -17,7 +10,6 @@ import {
   MdList,
   MdFormatUnderlined,
   MdFormatQuote,
-  MdLink,
 } from 'react-icons/md'
 
 import Notice from './components/Notice'
