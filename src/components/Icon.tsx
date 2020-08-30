@@ -1,12 +1,21 @@
 import React from 'react'
 import { OverlayTrigger, Tooltip, Button } from 'react-bootstrap'
+import { IconBaseProps } from 'react-icons/lib'
 
-const Icon: React.FC<any> = ({
+type handleSetText = (setTextValue: string) => void
+interface IIconProps {
+  handleSetText: handleSetText
+  setTextValue: string
+  setTooltipText: string
+  button: IconBaseProps
+}
+
+const Icon: React.FC<IIconProps> = ({
   handleSetText,
   setTextValue,
   setTooltipText,
   button,
-}: any) => {
+}: IIconProps) => {
   return (
     <OverlayTrigger overlay={<Tooltip id="tooltip">{setTooltipText}</Tooltip>}>
       <Button
