@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
+body {
+  background: rgb(231,231,231);
+  background: linear-gradient(120deg, rgba(231,231,231,1) 0%, rgba(198,198,198,1) 100%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main {
+  background-color: #fff;
+  padding-top: 0.3em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.form-control {
+  border: 0;
+  border-radius: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.icons {
+  margin: 0.3em 0;
 }
 
-.App-link {
-  color: #61dafb;
+hr {
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#editable {
+  min-height: 12em;
+  padding: 0.8em 1em;
+  margin-bottom: 1em; 
+}
+
+blockquote {
+  background-color: #e9e9e9;
+  border-left: 3px solid #e83e8c;
+  padding: 0.4em 0.8em;
+  margin: 0.5em 0.2em;
+}
+
+code {
+  background-color: #e9e9e9;
+  padding: 0.1em 0.4em;
+}
+
+h1 {
+  font-size: 2.2em;
+}
+
+a {
+  cursor: pointer;
+}
+
+div>li {
+  margin: 0 0 0 1em;
+}
+
+div:focus {
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+
+.modal-body p {
+  margin: 0;
 }
