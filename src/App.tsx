@@ -23,6 +23,7 @@ import {
 import Notice from './components/Notice'
 
 import './App.css'
+import Icon from './components/Icon'
 
 const App: React.FC = () => {
   const [text, setText] = useState('')
@@ -56,7 +57,7 @@ const App: React.FC = () => {
     getSelectionText('blockquote')
   }
 
-  async function handleSetText(event: any) {
+  function handleSetText(event: any) {
     switch (event) {
       case 'title':
         eventTitle()
@@ -143,82 +144,51 @@ const App: React.FC = () => {
                 style: { verticalAlign: 'middle' },
               }}
             >
-              <OverlayTrigger
-                overlay={<Tooltip id="tooltip">Título: atalho ALT+T</Tooltip>}
-              >
-                <Button
-                  variant="none"
-                  onClick={() => handleSetText('title')}
-                  id="btn-title"
-                >
-                  <MdTitle />
-                </Button>
-              </OverlayTrigger>
-              <OverlayTrigger
-                overlay={<Tooltip id="tooltip">Negrito: atalho ALT+N</Tooltip>}
-              >
-                <Button variant="none" onClick={() => handleSetText('bold')}>
-                  <MdFormatBold />
-                </Button>
-              </OverlayTrigger>
-              <OverlayTrigger
-                overlay={<Tooltip id="tooltip">Itálico: atalho ALT+I</Tooltip>}
-              >
-                <Button variant="none" onClick={() => handleSetText('italic')}>
-                  <MdFormatItalic />
-                </Button>
-              </OverlayTrigger>
-              <OverlayTrigger
-                overlay={
-                  <Tooltip id="tooltip">Sublinhado: atalho ALT+S</Tooltip>
-                }
-              >
-                <Button
-                  variant="none"
-                  onClick={() => handleSetText('underline')}
-                >
-                  <MdFormatUnderlined />
-                </Button>
-              </OverlayTrigger>
-              <OverlayTrigger
-                overlay={<Tooltip id="tooltip">Código: atalho ALT+C</Tooltip>}
-              >
-                <Button variant="none" onClick={() => handleSetText('code')}>
-                  <MdCode />
-                </Button>
-              </OverlayTrigger>
-              <OverlayTrigger
-                overlay={<Tooltip id="tooltip">Lista: atalho ALT+L</Tooltip>}
-              >
-                <Button variant="none" onClick={() => handleSetText('list')}>
-                  <MdList />
-                </Button>
-              </OverlayTrigger>
-              <OverlayTrigger
-                overlay={
-                  <Tooltip id="tooltip">Citação: atalho ALT+&apos;</Tooltip>
-                }
-              >
-                <Button
-                  variant="none"
-                  onClick={() => handleSetText('blockquote')}
-                  id="btn-blockquote"
-                >
-                  <MdFormatQuote />
-                </Button>
-              </OverlayTrigger>
-              <OverlayTrigger
-                overlay={<Tooltip id="tooltip">Link: atalho ALT+H</Tooltip>}
-              >
-                <Button
-                  variant="none"
-                  onClick={() => handleSetText('hiperlink')}
-                >
-                  <MdLink />
-                </Button>
-              </OverlayTrigger>
+              <Icon
+                handleSetText={handleSetText}
+                setTextValue="title"
+                setTooltipText="Título: atalho ALT+T"
+                button={<MdTitle />}
+              />
+              <Icon
+                handleSetText={handleSetText}
+                setTextValue="bold"
+                setTooltipText="Negrito: atalho ALT+N"
+                button={<MdFormatBold />}
+              />
+              <Icon
+                handleSetText={handleSetText}
+                setTextValue="italic"
+                setTooltipText="Itálico: atalho ALT+I"
+                button={<MdFormatItalic />}
+              />
+              <Icon
+                handleSetText={handleSetText}
+                setTextValue="underline"
+                setTooltipText="Sublinhado: atalho ALT+S"
+                button={<MdFormatUnderlined />}
+              />
+              <Icon
+                handleSetText={handleSetText}
+                setTextValue="code"
+                setTooltipText="Código: atalho ALT+C"
+                button={<MdCode />}
+              />
+              <Icon
+                handleSetText={handleSetText}
+                setTextValue="list"
+                setTooltipText="Lista: atalho ALT+L"
+                button={<MdList />}
+              />
+              <Icon
+                handleSetText={handleSetText}
+                setTextValue="blockquote"
+                setTooltipText="Citação: atalho ALT+'"
+                button={<MdFormatQuote />}
+              />
               <hr />
             </IconContext.Provider>
+
             <ContentEditable
               id="editable"
               html={text}
