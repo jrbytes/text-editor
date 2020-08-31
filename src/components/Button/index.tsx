@@ -2,7 +2,7 @@ import React from 'react'
 import { OverlayTrigger, Tooltip, Button } from 'react-bootstrap'
 import { IconBaseProps } from 'react-icons/lib'
 
-import { useHandleButton } from '../hooks/handleButtons'
+import { useHandleButton } from '../../hooks/handleButtons'
 
 interface IIconProps {
   setTextFormat: string

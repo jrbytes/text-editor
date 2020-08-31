@@ -1,29 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import ContentEditable from 'react-contenteditable'
 import { Container, Row, Col } from 'react-bootstrap'
 import { IconContext } from 'react-icons/'
-import {
-  MdTitle,
-  MdFormatBold,
-  MdFormatItalic,
-  MdCode,
-  MdList,
-  MdFormatUnderlined,
-  MdFormatQuote,
-} from 'react-icons/md'
 
 import { useHandleShortcut } from './hooks/handleShortcuts'
 
 import Notice from './components/Notice'
+import Button from './components/Button'
+import { ButtonData } from './components/Button/data'
 
 import './App.css'
-import Button from './components/Button'
 
 const App: React.FC = () => {
   const [text, setText] = useState('')
   const [notice, setNotice] = useState(false)
 
   const [handleSetText] = useHandleShortcut()
+
+  const buttons = useMemo(() => {
+    return ButtonData.map(item => (
+      <Button
+        key={item.title}
+        setTextFormat={item.title}
+        setTooltipText={item.tooltip}
+        button={item.button}
+      />
+    ))
+  }, [])
 
   return (
     <>
@@ -35,7 +38,7 @@ const App: React.FC = () => {
             justify-content-center"
           style={{ height: '100vh' }}
         >
-          <Col md={6} className="main">
+          <Col md={8} className="main">
             <IconContext.Provider
               value={{
                 size: '1.3em',
@@ -43,41 +46,7 @@ const App: React.FC = () => {
                 style: { verticalAlign: 'middle' },
               }}
             >
-              <Button
-                setTextFormat="title"
-                setTooltipText="Título: atalho ALT+T"
-                button={<MdTitle />}
-              />
-              <Button
-                setTextFormat="bold"
-                setTooltipText="Negrito: atalho ALT+N"
-                button={<MdFormatBold />}
-              />
-              <Button
-                setTextFormat="italic"
-                setTooltipText="Itálico: atalho ALT+I"
-                button={<MdFormatItalic />}
-              />
-              <Button
-                setTextFormat="underline"
-                setTooltipText="Sublinhado: atalho ALT+S"
-                button={<MdFormatUnderlined />}
-              />
-              <Button
-                setTextFormat="code"
-                setTooltipText="Código: atalho ALT+C"
-                button={<MdCode />}
-              />
-              <Button
-                setTextFormat="list"
-                setTooltipText="Lista: atalho ALT+L"
-                button={<MdList />}
-              />
-              <Button
-                setTextFormat="blockquote"
-                setTooltipText="Citação: atalho ALT+'"
-                button={<MdFormatQuote />}
-              />
+              {buttons}
               <hr />
             </IconContext.Provider>
 
