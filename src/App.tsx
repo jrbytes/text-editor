@@ -12,6 +12,8 @@ import {
   MdFormatQuote,
 } from 'react-icons/md'
 
+import { useHandleShortcut } from './hooks/handleShortcut'
+
 import Notice from './components/Notice'
 
 import './App.css'
@@ -19,104 +21,9 @@ import Icon from './components/Icon'
 
 const App: React.FC = () => {
   const [text, setText] = useState('')
-  const [notice, setNotice] = useState(true)
+  const [notice, setNotice] = useState(false)
 
-  function eventTitle() {
-    getSelectionText('h1')
-  }
-
-  function eventBold() {
-    getSelectionText('strong')
-  }
-
-  function eventItalic() {
-    getSelectionText('em')
-  }
-
-  function eventUnderline() {
-    getSelectionText('u')
-  }
-
-  function eventCode() {
-    getSelectionText('code')
-  }
-
-  function eventList() {
-    getSelectionText('li')
-  }
-
-  function eventBlockquote() {
-    getSelectionText('blockquote')
-  }
-
-  function handleSetText(event: any) {
-    switch (event) {
-      case 'title':
-        eventTitle()
-        break
-      case 'bold':
-        eventBold()
-        break
-      case 'italic':
-        eventItalic()
-        break
-      case 'underline':
-        eventUnderline()
-        break
-      case 'code':
-        eventCode()
-        break
-      case 'list':
-        eventList()
-        break
-      case 'blockquote':
-        eventBlockquote()
-        break
-      default:
-        break
-    }
-
-    // eslint-disable-next-line no-shadow
-    onkeydown = event => {
-      const alt = event.altKey === true
-      const { which } = event
-
-      if (alt && which === 84) {
-        eventTitle()
-      }
-      if (alt && which === 78) {
-        eventBold()
-      }
-      if (alt && which === 73) {
-        eventItalic()
-      }
-      if (alt && which === 83) {
-        eventUnderline()
-      }
-      if (alt && which === 67) {
-        eventCode()
-      }
-      if (alt && which === 76) {
-        eventList()
-      }
-      if (alt && which === 192) {
-        eventBlockquote()
-      }
-    }
-  }
-
-  function getSelectionText(tag: any) {
-    console.log('evento tag: ', tag)
-    const sel = window.getSelection && window.getSelection()
-    if (sel && sel.rangeCount > 0) {
-      const range = document.getSelection()?.getRangeAt(0)
-      const element = document.createElement(tag)
-      console.log('intervalo: ', range)
-      if (range !== undefined) {
-        range.surroundContents(element)
-      }
-    }
-  }
+  const [handleSetText] = useHandleShortcut()
 
   return (
     <>
@@ -137,44 +44,37 @@ const App: React.FC = () => {
               }}
             >
               <Icon
-                handleSetText={handleSetText}
-                setTextValue="title"
+                setTextFormat="title"
                 setTooltipText="Título: atalho ALT+T"
                 button={<MdTitle />}
               />
               <Icon
-                handleSetText={handleSetText}
-                setTextValue="bold"
+                setTextFormat="bold"
                 setTooltipText="Negrito: atalho ALT+N"
                 button={<MdFormatBold />}
               />
               <Icon
-                handleSetText={handleSetText}
-                setTextValue="italic"
+                setTextFormat="italic"
                 setTooltipText="Itálico: atalho ALT+I"
                 button={<MdFormatItalic />}
               />
               <Icon
-                handleSetText={handleSetText}
-                setTextValue="underline"
+                setTextFormat="underline"
                 setTooltipText="Sublinhado: atalho ALT+S"
                 button={<MdFormatUnderlined />}
               />
               <Icon
-                handleSetText={handleSetText}
-                setTextValue="code"
+                setTextFormat="code"
                 setTooltipText="Código: atalho ALT+C"
                 button={<MdCode />}
               />
               <Icon
-                handleSetText={handleSetText}
-                setTextValue="list"
+                setTextFormat="list"
                 setTooltipText="Lista: atalho ALT+L"
                 button={<MdList />}
               />
               <Icon
-                handleSetText={handleSetText}
-                setTextValue="blockquote"
+                setTextFormat="blockquote"
                 setTooltipText="Citação: atalho ALT+'"
                 button={<MdFormatQuote />}
               />
