@@ -2,7 +2,7 @@ import React from 'react'
 import { OverlayTrigger, Tooltip, Button } from 'react-bootstrap'
 import { IconBaseProps } from 'react-icons/lib'
 
-import { useHandleIcon } from '../hooks/handleIcon'
+import { useHandleButton } from '../hooks/handleButtons'
 
 interface IIconProps {
   setTextFormat: string
@@ -10,12 +10,12 @@ interface IIconProps {
   button: IconBaseProps
 }
 
-const Icon: React.FC<IIconProps> = ({
+const ButtonComponent: React.FC<IIconProps> = ({
   setTextFormat,
   setTooltipText,
   button,
 }: IIconProps) => {
-  const [handleSetText] = useHandleIcon()
+  const [handleSetText] = useHandleButton()
 
   return (
     <OverlayTrigger overlay={<Tooltip id="tooltip">{setTooltipText}</Tooltip>}>
@@ -30,4 +30,4 @@ const Icon: React.FC<IIconProps> = ({
   )
 }
 
-export default Icon
+export default ButtonComponent

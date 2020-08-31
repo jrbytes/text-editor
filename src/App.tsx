@@ -12,12 +12,12 @@ import {
   MdFormatQuote,
 } from 'react-icons/md'
 
-import { useHandleShortcut } from './hooks/handleShortcut'
+import { useHandleShortcut } from './hooks/handleShortcuts'
 
 import Notice from './components/Notice'
 
 import './App.css'
-import Icon from './components/Icon'
+import Button from './components/Button'
 
 const App: React.FC = () => {
   const [text, setText] = useState('')
@@ -43,37 +43,37 @@ const App: React.FC = () => {
                 style: { verticalAlign: 'middle' },
               }}
             >
-              <Icon
+              <Button
                 setTextFormat="title"
                 setTooltipText="Título: atalho ALT+T"
                 button={<MdTitle />}
               />
-              <Icon
+              <Button
                 setTextFormat="bold"
                 setTooltipText="Negrito: atalho ALT+N"
                 button={<MdFormatBold />}
               />
-              <Icon
+              <Button
                 setTextFormat="italic"
                 setTooltipText="Itálico: atalho ALT+I"
                 button={<MdFormatItalic />}
               />
-              <Icon
+              <Button
                 setTextFormat="underline"
                 setTooltipText="Sublinhado: atalho ALT+S"
                 button={<MdFormatUnderlined />}
               />
-              <Icon
+              <Button
                 setTextFormat="code"
                 setTooltipText="Código: atalho ALT+C"
                 button={<MdCode />}
               />
-              <Icon
+              <Button
                 setTextFormat="list"
                 setTooltipText="Lista: atalho ALT+L"
                 button={<MdList />}
               />
-              <Icon
+              <Button
                 setTextFormat="blockquote"
                 setTooltipText="Citação: atalho ALT+'"
                 button={<MdFormatQuote />}
