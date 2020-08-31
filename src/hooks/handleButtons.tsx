@@ -1,23 +1,16 @@
 import { shortcuts } from './shortcuts'
 
+import { useGetTextSelection } from './getTextSelection'
+
 export function useHandleButton() {
-  function getSelectionText(tag: string) {
-    const sel = window.getSelection && window.getSelection()
-    if (sel && sel.rangeCount > 0) {
-      const range = document.getSelection()?.getRangeAt(0)
-      const element = document.createElement(tag)
-      if (range !== undefined) {
-        range.surroundContents(element)
-      }
-    }
-  }
+  const [getTextSelection] = useGetTextSelection()
 
   function handleSetText(event: string) {
     const iconName = event
 
     if (iconName) {
       const result = shortcuts.filter(item => item.name === iconName)
-      getSelectionText(result[0].tag)
+      getTextSelection(result[0].tag)
     }
   }
 
