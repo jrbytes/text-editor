@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import ContentEditable from 'react-contenteditable'
 import { Container, Row, Col } from 'react-bootstrap'
 import { IconContext } from 'react-icons/'
@@ -16,6 +16,13 @@ const App: React.FC = () => {
   const [notice, setNotice] = useState(false)
 
   const [handleSetText] = useHandleShortcut()
+
+  useEffect(() => {
+    async function applyFocus() {
+      await document.getElementById('editable')?.focus()
+    }
+    applyFocus()
+  }, [text])
 
   const buttons = useMemo(() => {
     return ButtonData.map(item => (
