@@ -20,6 +20,7 @@ const App: React.FC = () => {
   useEffect(() => {
     async function applyFocus() {
       await document.getElementById('editable')?.focus()
+      console.log(text)
     }
     applyFocus()
   }, [text])
